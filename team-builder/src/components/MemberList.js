@@ -13,7 +13,7 @@ const MemberList = props => {
                 <td>Role</td>
             </th>
             {members.map(member => (
-                <Member member={member} />
+                <Member key={member.id} member={member} />
             ))}
         </table>
     );
