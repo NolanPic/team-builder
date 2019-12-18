@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { roles } from '../data'; 
 
 const Form = props => {
 
     const { formValues, updateValue, submitForm } = props;
+    const [selectRoles] = useState(roles);
 
     return (
         <form>
@@ -22,6 +24,9 @@ const Form = props => {
             />
             <select id="role" onChange={updateValue}>
                 <option value="">-- Select a role --</option>
+                {selectRoles.map(({ role }) => (
+                    <option key={role} value="role">{role}</option>
+                ))}
             </select>
 
             <button>Save</button>
