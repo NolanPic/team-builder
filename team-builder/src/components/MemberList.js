@@ -7,14 +7,18 @@ const MemberList = props => {
 
     return (
         <table>
-            <th>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Role</td>
-            </th>
-            {members.map(member => (
-                <Member key={member.id} member={member} />
-            ))}
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                {members.map(member => (
+                    <Member key={member.id} member={member} />
+                ))}
+            </tbody>
         </table>
     );
 };
