@@ -3,8 +3,41 @@ import { roles } from '../data';
 
 const Form = props => {
 
-    const { formValues, updateValue, submitForm } = props;
+    const initialForm = {
+        id: 0,
+        name: '',
+        email: '',
+        role: ''
+      };
+
+    const { members, setMembers } = props;
+    const [memberForm, setMemberForm] = useState(initialForm);
     const [selectRoles] = useState(roles);
+
+    const makeNewMemberID = () => parseInt(performance.now().toString().replace('.', ''));
+
+    const submitForm = e => {
+        e.preventDefault();
+
+        if(memberForm.id === 0) {
+            // new member
+            setMembers(
+                [ 
+                    ...members,
+                    { ...memberForm, id: makeNewMemberID() } 
+                ]
+            );
+        }
+
+        setMemberForm(initialForm);
+    };
+
+    const updateFormValue = e => {
+        setMemberForm({
+            ...memberForm,
+            [e.target.id]: e.target.value
+        });
+    };
 
     return (
         <form onSubmit={submitForm}>
@@ -12,23 +45,23 @@ const Form = props => {
                 placeholder="Name"
                 type="text"
                 id="name"
-                value={formValues.name}
-                onChange={updateValue}
+                value={memberForm.name}
+                onChange={updateFormValue}
             />
             <input
                 placeholder="Email"
                 type="email"
                 id="email"
-                value={formValues.email}
-                onChange={updateValue}
+                value={memberForm.email}
+                onChange={updateFormValue}
             />
-            <select id="role" onChange={updateValue}>
+            <select id="role" onChange={updateFormValue}>
                 <option value="">-- Select a role --</option>
                 {selectRoles.map(({ role }) => (
                     <option
                         key={role}
                         value={role}
-                        selected={formValues.role === role}>
+                        selected={memberForm.role === role}>
                         {role}
                     </option>
                 ))}
