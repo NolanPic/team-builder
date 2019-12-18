@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #282c34;
+  min-height: 100vh;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.App {
+  width: 65%;
+  margin: 0 auto;
+}
