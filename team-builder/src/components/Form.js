@@ -7,7 +7,7 @@ const Form = props => {
     const [selectRoles] = useState(roles);
 
     return (
-        <form>
+        <form onSubmit={submitForm}>
             <input
                 placeholder="Name"
                 type="text"
@@ -25,7 +25,12 @@ const Form = props => {
             <select id="role" onChange={updateValue}>
                 <option value="">-- Select a role --</option>
                 {selectRoles.map(({ role }) => (
-                    <option key={role} value="role">{role}</option>
+                    <option
+                        key={role}
+                        value={role}
+                        selected={formValues.role === role}>
+                        {role}
+                    </option>
                 ))}
             </select>
 

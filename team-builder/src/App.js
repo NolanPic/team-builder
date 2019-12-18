@@ -17,10 +17,25 @@ function App() {
   const [members, setMembers] = useState(team);
   const [memberForm, setMemberForm] = useState(initialForm);
 
+  const submitForm = e => {
+    e.preventDefault();
+  };
+
+  const updateFormValue = e => {
+    setMemberForm({
+      ...memberForm,
+      [e.target.id]: e.target.value
+    });
+  };
+
   return (
     <div className="App">
       <MemberList members={members} />
-      <Form formValues={memberForm} />
+      <Form
+        formValues={memberForm}
+        submitForm={submitForm}
+        updateValue={updateFormValue}
+      />
     </div>
   );
 }
