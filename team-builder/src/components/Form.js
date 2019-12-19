@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { roles } from '../data'; 
 
 const Form = props => {
@@ -10,7 +10,7 @@ const Form = props => {
         role: ''
       };
 
-    const { members, setMembers } = props;
+    const { members, setMembers, memberToEdit, setMemberToEdit } = props;
     const [memberForm, setMemberForm] = useState(initialForm);
     const [selectRoles] = useState(roles);
 
@@ -30,6 +30,9 @@ const Form = props => {
         }
 
         setMemberForm(initialForm);
+        
+        // if a member was being edited, set it back to null
+        setMemberToEdit(null);
     };
 
     const updateFormValue = e => {
@@ -38,6 +41,13 @@ const Form = props => {
             [e.target.id]: e.target.value
         });
     };
+
+    useEffect(() => {
+        // set the member to be edited if it exists / is not null
+        if(memberToEdit && memberToEdit.id !== 0){
+            setMemberForm(memberToEdit);
+        }
+    }, [memberToEdit]);
 
     return (
         <form onSubmit={submitForm}>

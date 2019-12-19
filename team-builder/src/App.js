@@ -8,15 +8,21 @@ function App() {
 
 
   const [members, setMembers] = useState(team);
+  const [memberToEdit, setMemberToEdit] = useState(null);
 
   const editMember = member => {
     console.log(member);
+    setMemberToEdit(member);
   };
 
   return (
     <div className="App">
-      <MemberList members={members} editMember={editMember} />
-      <Form members={members} setMembers={setMembers}
+      <MemberList members={members} setMemberToEdit={setMemberToEdit} />
+      <Form
+        members={members}
+        setMember={setMembers}
+        memberToEdit={memberToEdit}
+        setMemberToEdit={setMemberToEdit}
       />
     </div>
   );
