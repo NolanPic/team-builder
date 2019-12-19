@@ -14,7 +14,7 @@ const Form = props => {
     const [memberForm, setMemberForm] = useState(initialForm);
     const [selectRoles] = useState(roles);
 
-    const makeNewMemberID = () => parseInt(performance.now().toString().replace('.', ''));
+    const makeNewMemberID = () => (members[members.length - 1].id + 1);
 
     const submitForm = e => {
         e.preventDefault();
