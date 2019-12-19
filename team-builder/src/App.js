@@ -5,15 +5,9 @@ import MemberList from './components/MemberList';
 import Form from './components/Form';
 
 function App() {
-
-
+  
   const [members, setMembers] = useState(team);
   const [memberToEdit, setMemberToEdit] = useState(null);
-
-  const editMember = member => {
-    console.log(member);
-    setMemberToEdit(member);
-  };
 
   return (
     <div className="App">
