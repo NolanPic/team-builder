@@ -21,11 +21,19 @@ const Form = props => {
 
         if(memberForm.id === 0) {
             // new member
-            setMembers(
-                [ 
-                    ...members,
-                    { ...memberForm, id: makeNewMemberID() } 
-                ]
+            setMembers([ 
+                ...members,
+                { ...memberForm, id: makeNewMemberID() } 
+            ]);
+        }
+        else {
+            // this is an existing member being edited
+            // find this member and exclude them
+            setMembers([
+                ...(members.filter(m => m.id !== memberForm.id)),
+                {...memberForm}
+            ]
+            .sort((a, b) => a.id > b.id ? 1 : -1) // sort the array by ID again
             );
         }
 
