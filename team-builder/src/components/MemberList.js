@@ -3,7 +3,7 @@ import Member from './Member';
 
 const MemberList = props => {
 
-    const { members } = props;
+    const { members, editMember } = props;
 
     return (
         <table>
@@ -16,7 +16,11 @@ const MemberList = props => {
             </thead>
             <tbody>
                 {members.map(member => (
-                    <Member key={member.id} member={member} />
+                    <Member
+                        key={member.id}
+                        member={member}
+                        editMember={editMember}
+                    />
                 ))}
             </tbody>
         </table>

@@ -55,13 +55,12 @@ const Form = props => {
                 value={memberForm.email}
                 onChange={updateFormValue}
             />
-            <select id="role" onChange={updateFormValue}>
+            <select id="role" onChange={updateFormValue} value={memberForm.role}>
                 <option value="">-- Select a role --</option>
                 {selectRoles.map(({ role }) => (
                     <option
                         key={role}
-                        value={role}
-                        selected={memberForm.role === role}>
+                        value={role}>
                         {role}
                     </option>
                 ))}
